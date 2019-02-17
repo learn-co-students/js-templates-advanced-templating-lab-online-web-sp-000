@@ -1,19 +1,8 @@
 function init() {
-  Handlebars.registerPartial(
-    "recipeDetailsPartial",
-    document.getElementById("recipe-details-partial").innerHTML
-  );
-  Handlebars.registerPartial(
-    "ingredientsPartial",
-    document.getElementById("ingredients-partial").innerHTML
-  );
-
-  Handlebars.registerHelper('ingredient_body', function(){
-    return new Handlebars.SafeString(`<li>${this.name}</li>`)
-  })
+  addHelpers()
+  addDetailsPartial();
   addFormTemplate();
   addRecipeTemplate();
-  addDetailsPartial();
 }
 
 function addFormTemplate() {
@@ -44,7 +33,22 @@ function addRecipeTemplate() {
   document.querySelector("main").innerHTML += html;
 }
 
-function addDetailsPartial() {}
+function addDetailsPartial() {
+  Handlebars.registerPartial(
+    "recipeDetailsPartial",
+    document.getElementById("recipe-details-partial").innerHTML
+  );
+  Handlebars.registerPartial(
+    "ingredientsPartial",
+    document.getElementById("ingredients-partial").innerHTML
+  );
+}
+
+function addHelpers() {
+  Handlebars.registerHelper("ingredient_body", function () {
+    return new Handlebars.SafeString(`<li>${this.name}</li>`);
+  });
+}
 
 function displayEditForm() {}
 
