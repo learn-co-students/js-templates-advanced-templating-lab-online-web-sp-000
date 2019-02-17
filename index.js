@@ -45,11 +45,8 @@ function addPartials() {
 }
 
 function addHelpers() {
-  Handlebars.registerHelper("displayIngredient", function () {
-    if (!this.name) { 
-      debugger
-    }
-    return new Handlebars.SafeString(`<li name="ingredients">${this.name}</li>`);
+  Handlebars.registerHelper("displayIngredient", function (ingredient) {
+    return new Handlebars.SafeString(`<li name="ingredients">${ingredient}</li>`);
   });
 }
 
