@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
-  <body>
+  <body style="margin: 1em;">
     <main id="main">
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -18,4 +18,20 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
   </body>
+
+  <!-- TEMPLATES -->
+
+  <script id='recipe-form-template' type='text/x-handlebars-template'>
+    <form onsubmit="handleSubmit()" id="recipe-form">
+      <p>Recipe:<br><input type="text" id="name"></p>
+      <p>Description:<br><input type="textarea" id="description"></p>
+
+      <!-- 5 ingredients, should probably be done in some interative way -->
+      <p>Ingredients:</p>
+      {{#each ingredients}}
+        <p><input type="text" name="ingredients"></p>
+        {{/each}}
+      <input type="submit">
+    </form>
+  </script>
 </html>
