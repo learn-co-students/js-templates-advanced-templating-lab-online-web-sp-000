@@ -46,19 +46,14 @@
 <script id='recipe-details-partial' type='text/x-handlebars-template'>
   <h3>Ingredients:</h3>
   <ul>{{#each ingredients}}
-    {{ingredient_body}}
+    {{displayIngredient this}}
   {{/each}}</ul>
   <h3>Instructions:</h3>
   <p id="recipeDescription">{{description}}</p>
 </script> 
 
 <script id='ingredients-partial' type='text/x-handlebars-template'>
-  <h3>Ingredients:</h3>
-  <ul>{{#each ingredients}}
-    {{ingredient_body}}
-  {{/each}}</ul>
-  <h3>Instructions:</h3>
-  <p id="recipeDescription">{{description}}</p>
+  <li>{{name}}</li>
 </script> 
 
 </html>

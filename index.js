@@ -1,6 +1,6 @@
 function init() {
   addHelpers()
-  addDetailsPartial();
+  addPartials();
   addFormTemplate();
   addRecipeTemplate();
 }
@@ -33,20 +33,23 @@ function addRecipeTemplate() {
   document.querySelector("main").innerHTML += html;
 }
 
-function addDetailsPartial() {
+function addPartials() {
   Handlebars.registerPartial(
     "recipeDetailsPartial",
     document.getElementById("recipe-details-partial").innerHTML
   );
   Handlebars.registerPartial(
-    "ingredientsPartial",
+    "displayIngredient",
     document.getElementById("ingredients-partial").innerHTML
   );
 }
 
 function addHelpers() {
-  Handlebars.registerHelper("ingredient_body", function () {
-    return new Handlebars.SafeString(`<li>${this.name}</li>`);
+  Handlebars.registerHelper("displayIngredient", function () {
+    if (!this.name) { 
+      debugger
+    }
+    return new Handlebars.SafeString(`<li name="ingredients">${this.name}</li>`);
   });
 }
 
