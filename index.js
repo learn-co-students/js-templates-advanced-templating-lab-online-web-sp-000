@@ -13,7 +13,7 @@ function addFormTemplate() {
   let template = document.getElementById("recipe-form-template").innerHTML;
   let fn = Handlebars.compile(template);
   let html = fn({ ingredients: Array(5).fill({ name: "" }) });
-  document.querySelector("#recipe-form").innerHTML = html;
+  document.querySelector("main").innerHTML = html;
 }
 
 function handleSubmit() {
@@ -21,7 +21,7 @@ function handleSubmit() {
   let template = document.getElementById("recipe-template").innerHTML;
   let fn = Handlebars.compile(template);
   let html = fn(recipe)
-  document.querySelector("#recipe").innerHTML = html;
+  document.querySelector("main").innerHTML = html;
 }
 
 function recipeFromForm() {
