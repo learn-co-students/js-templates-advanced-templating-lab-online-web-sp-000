@@ -62,13 +62,13 @@ describe('Handlebars Templates Lab', function() {
   })
 
   describe('functions', function() {
-    before(function() {
-    })
+    before(function() {})
 
     describe('handleSubmit', function() {
       it('renders the recipe template', function() {
         // load the new recipe form and fill it out
         init()
+        // debugger
         var ingredients = document.getElementsByName("ingredients")
         var nameField = document.getElementById("name")
         var descriptionField = document.getElementById("description")

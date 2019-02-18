@@ -2,36 +2,43 @@ function init() {
   addHelpers()
   addPartials();
   addFormTemplate();
-  addRecipeTemplate();
+  // addRecipeTemplate();
+}
+
+function addRecipeTemplate() {
+
 }
 
 function addFormTemplate() {
   let template = document.getElementById("recipe-form-template").innerHTML;
   let fn = Handlebars.compile(template);
   let html = fn({ ingredients: Array(5).fill({ name: "" }) });
-  document.querySelector("main").innerHTML += html;
+  document.querySelector("#recipe-form").innerHTML = html;
 }
 
 function handleSubmit() {
+  let recipe = recipeFromForm()
+  let template = document.getElementById("recipe-template").innerHTML;
+  let fn = Handlebars.compile(template);
+  let html = fn(recipe)
+  document.querySelector("#recipe").innerHTML = html;
+}
+
+function recipeFromForm() {
   let name = document.getElementById("name").value;
   let description = document.getElementById("description").value;
+
   let ingredients = [];
   let form = document.getElementById("recipe-form");
   let ingredientFields = form.querySelectorAll("input[name=ingredients]");
   ingredientFields.forEach(i => {
-    ingredients.push({ name: i.value });
+    if (i.value.length > 0) 
+      ingredients.push(i.value);
   });
-  recipe = { name: name, description: description, ingredients: ingredients };
+
+  return { name: name, description: description, ingredients: ingredients };
 }
 
-let recipe;
-
-function addRecipeTemplate() {
-  let template = document.getElementById("recipe-template").innerHTML;
-  let fn = Handlebars.compile(template);
-  let html = fn(recipe);
-  document.querySelector("main").innerHTML += html;
-}
 
 function addPartials() {
   Handlebars.registerPartial(
