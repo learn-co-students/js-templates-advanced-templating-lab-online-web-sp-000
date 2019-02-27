@@ -16,7 +16,6 @@ describe('Handlebars Templates Lab', function() {
       expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
     })
   })
-
   describe('templates', function() {
     it('has a recipe form template', function() {
       var recipeFormTemplate = document.getElementById("recipe-form-template")
