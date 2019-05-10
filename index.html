@@ -13,34 +13,28 @@
     <!--recipe form template-->
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit(); return false;">
-        Name: <input type="text" id="name" name="name"><br>
-        Description: <input type="textarea" id="description" name="description"><br>
-        
-        Ingredient: <input type="textarea" id="ingredients" name="ingredients"><br>
-        Ingredient: <input type="textarea" id="ingredients" name="ingredients"><br>
-        Ingredient: <input type="textarea" id="ingredients" name="ingredients"><br>
-        Ingredient: <input type="textarea" id="ingredients" name="ingredients"><br>
-        Ingredient: <input type="textarea" id="ingredients" name="ingredients"><br>
-        <input type="submit">
-      </form>
+          Name: <input type="text" id="name" value="{{name}}"><br>
+          Description: <input type="textarea" id="description" value="{{description}}"><br>
+          <ul>
+            {{#each ingredients}}
+            Ingredient: <input type="textarea" name="ingredients" value="{{this}}"><br>
+          {{/each}}
+           </ul>
+          <input type="submit">
+        </form>
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
       <h1 id="recipeName">{{ name }}</h1>
-      <a href="#" onclick="displayEditForm();">Edit Recipe</a>
       {{> recipeDetailsPartial }}
+      <a href="#" onclick="displayEditForm()">Edit Recipe</a>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="recipeDescription">{{ description }}
-        <ul>
+      <div id="recipeDescription">{{ description }}</div>
           {{#each ingredients}}
-          <li>
             {{ displayIngredient this }}
-          </li>
-        {{/each}} 
-        </ul>
-      </div>
+          {{/each}} 
     </script>
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
