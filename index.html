@@ -8,6 +8,12 @@
   </head>
   <body>
     <main id="main">
+      <form id="recipe-form" onsubmit="handleSubmit()">
+        Name: <input type="text" id="name"><br>
+        Description: <input type="text" id="description"><br>
+        Ingredients: <input type="textarea" id="ingredients">
+        <input type="submit">
+      </form>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
